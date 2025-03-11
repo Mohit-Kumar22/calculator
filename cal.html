@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* Animated Background */
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(45deg, #6a11cb, #2575fc);
+            }
+
+            50% {
+                background: linear-gradient(45deg, #ff7f50, #ff6347);
+            }
+
+            100% {
+                background: linear-gradient(45deg, #6a11cb, #2575fc);
+            }
+        }
+
+        /* Text Animation for 'Mohit Kumar' */
+        @keyframes textAnimation {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+                color: #fff;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                color: #ff6347;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                color: #fff;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            animation: backgroundAnimation 10s ease infinite; /* Animated background */
+        }
+
+        .card {
+            width: 500px;
+            background-color: #2c2c2c; /* Dark gray background for the calculator */
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            height: 600px;
+        }
+
+        .card input {
+            width: 90%;
+            padding: 20px;
+            font-size: 32px;
+            text-align: right;
+            border: none;
+            border-radius: 10px;
+            background-color: #444; /* Dark background for the input field */
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .card input:focus {
+            outline: none;
+            border-color: #2575fc;
+        }
+
+        .card table {
+            width: 100%;
+            border-spacing: 10px;
+        }
+
+        .card table tr td {
+            background-color: #333; /* Dark background for the buttons */
+            padding: 5px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .card table tr td button {
+            font-size: 20px;
+            font-weight: bold;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .card table tr td button:hover {
+            background-color: #ff7f50; /* Change background on hover */
+            transform: scale(1.1);
+        }
+
+        .card table tr td button:active {
+            transform: scale(1);
+        }
+
+        .card table tr td button.operator {
+            background-color: #ff6347; /* Red background for operators */
+            color: white;
+        }
+
+        .card table tr td button.operator:hover {
+            background-color: #ff4500; /* Darker red on hover */
+        }
+
+        .card table tr td button.equal {
+            background-color: #2575fc; /* Blue background for the equal button */
+            color: white;
+        }
+
+        .card table tr td button.equal:hover {
+            background-color: #1a59c0; /* Darker blue on hover */
+        }
+
+        .card table tr td button.clear {
+            background-color: #ccc; /* Gray background for the clear button */
+        }
+
+        .card table tr td button.clear:hover {
+            background-color: #bbb; /* Darker gray on hover */
+        }
+
+        .card table tr td button.zero {
+            width: 145px; /* Make zero button larger */
+        }
+
+        /* Styling for the "Mohit Kumar" text at the bottom */
+        .footer-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: textAnimation 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <input type="text" id="display" disabled>
+        <table>
+            <tr>
+                <td><button class="clear" onclick="clearDisplay()">C</button></td>
+                <td><button class="operator" onclick="appendToDisplay('+')">+</button></td>
+                <td><button class="operator" onclick="appendToDisplay('-')">-</button></td>
+                <td><button class="operator" onclick="appendToDisplay('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('7')">7</button></td>
+                <td><button onclick="appendToDisplay('8')">8</button></td>
+                <td><button onclick="appendToDisplay('9')">9</button></td>
+                <td><button class="operator" onclick="appendToDisplay('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('4')">4</button></td>
+                <td><button onclick="appendToDisplay('5')">5</button></td>
+                <td><button onclick="appendToDisplay('6')">6</button></td>
+                <td><button class="equal" onclick="calculate()">=</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('1')">1</button></td>
+                <td><button onclick="appendToDisplay('2')">2</button></td>
+                <td><button onclick="appendToDisplay('3')">3</button></td>
+                <td><button onclick="appendToDisplay('.')">.</button></td>
+            </tr>
+            <tr>
+                <td class="zero" colspan="2"><button onclick="appendToDisplay('0')">0</button></td>
+                <td><button onclick="appendToDisplay('00')">00</button></td>
+                <td><button onclick="appendToDisplay('%')">%</button></td>
+            </tr>
+        </table>
+        <!-- Animated Footer Text -->
+        <div class="footer-text">Mohit Kumar</div>
+    </div>
+    <script src="./cal.js"></script>
+</body>
+
+</html>
